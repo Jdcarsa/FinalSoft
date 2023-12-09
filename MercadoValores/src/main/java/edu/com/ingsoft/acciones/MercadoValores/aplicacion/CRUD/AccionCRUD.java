@@ -1,6 +1,7 @@
 package edu.com.ingsoft.acciones.MercadoValores.aplicacion.CRUD;
 
 
+import edu.com.ingsoft.acciones.MercadoValores.dominio.modelo.Accion;
 import edu.com.ingsoft.acciones.MercadoValores.infraestructura.servicio.IAccionServicio;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,31 +19,31 @@ public class AccionCRUD {
     private IAccionServicio servicio;
 
     @PostMapping({"/accion/guardar"})
-    public ResponseEntity<AccionDTO> guardar(@Valid @RequestBody AccionDTO a){
+    public ResponseEntity<Accion> guardar(@Valid @RequestBody Accion a){
         return  new ResponseEntity<>(servicio.guardarAccion(a), HttpStatus.CREATED);
     }
 
     @GetMapping({"accion/obtener"})
-    public ResponseEntity<List<AccionDTO>> obtenerAcciones (){
+    public ResponseEntity<List<Accion>> obtenerAcciones (){
         return new ResponseEntity<>(servicio.obtenerAcciones(),HttpStatus.FOUND);
     }
 
 
 
     @GetMapping({"accion/obtener/{id}"})
-    public ResponseEntity<AccionDTO> obtenerAccion(@Valid @PathVariable(name = "id") Long id){
+    public ResponseEntity<Accion> obtenerAccion(@Valid @PathVariable(name = "id") Long id){
         return new ResponseEntity<>(servicio.obtenerAccionPorId(id),HttpStatus.FOUND);
     }
 
 
     @PutMapping({"accion/actualizar/{id}"})
-    public ResponseEntity<AccionDTO> actualizar(@Valid @RequestBody AccionDTO upA ,
+    public ResponseEntity<Accion> actualizar(@Valid @RequestBody AccionDTO upA ,
                                                 @Valid @PathVariable(name = "id") Long id ){
         return ResponseEntity.ok(servicio.actualizarAccion(id,upA));
     }
 
     @PutMapping({"accion/actualizarPrecio/{id}"})
-    public ResponseEntity<AccionDTO> actualizarPrecio(@Valid @RequestParam double precio ,
+    public ResponseEntity<Accion> actualizarPrecio(@Valid @RequestParam double precio ,
                                                       @Valid @PathVariable(name = "id") Long id ){
         return ResponseEntity.ok(servicio.cambiarPrecioAccion(id, precio));
     }

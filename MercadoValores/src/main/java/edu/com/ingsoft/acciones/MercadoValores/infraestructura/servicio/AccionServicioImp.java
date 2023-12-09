@@ -1,9 +1,12 @@
 package edu.com.ingsoft.acciones.MercadoValores.infraestructura.servicio;
 
 
+import edu.com.ingsoft.acciones.MercadoValores.dominio.modelo.Accion;
 import edu.com.ingsoft.acciones.MercadoValores.infraestructura.excepciones.ResourceNotFoundException;
 import edu.com.ingsoft.acciones.MercadoValores.infraestructura.dto.AccionDTO;
 import edu.com.ingsoft.acciones.MercadoValores.dominio.repositorio.IAccionRepositorio;
+import edu.com.ingsoft.acciones.MercadoValores.infraestructura.mapper.AccionMapperImp;
+import edu.com.ingsoft.acciones.MercadoValores.infraestructura.mapper.IAccionMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,20 +19,25 @@ public class AccionServicioImp implements IAccionServicio {
     @Autowired
     private IAccionRepositorio repositorio;
 
+    private IAccionMapper mapper = new AccionMapperImp();
+
     @Override
-    public AccionDTO guardarAccion(AccionDTO a) {
+    public Accion guardarAccion(Accion a) {
         aumentarPrecios();
-        return repositorio.save(a);
+        AccionDTO aDTO = mapper.toDTO(a);
+        Accion accionGuardada = mapper.toDominio(repositorio.save(aDTO));
+        return accionGuardada;
     }
 
     @Override
-    public List<AccionDTO> obtenerAcciones() {
+    public List<Accion> obtenerAcciones() {
         aumentarPrecios();
-        return repositorio.findAll();
+        List<Accion> acciones = mapper.toDominioList(repositorio.findAll());
+        return acciones;
     }
 
     @Override
-    public AccionDTO actualizarAccion(Long id, AccionDTO accionDTOActualizada) {
+    public Accion actualizarAccion(Long id, AccionDTO accionDTOActualizada) {
         AccionDTO a = repositorio.findById(id).orElseThrow(()
                 -> new ResourceNotFoundException("Accion","id",id));
         a.setNombreAccion(accionDTOActualizada.getNombreAccion());
@@ -38,17 +46,17 @@ public class AccionServicioImp implements IAccionServicio {
         a.setUmbralSuperior(a.getUmbralSuperior());
         a.setUmbralInferior(a.getUmbralInferior());
         aumentarPrecios();
-
-        return repositorio.save(a);
+        Accion accionActualizada = mapper.toDominio(repositorio.save(a));
+        return accionActualizada;
     }
 
     @Override
-    public AccionDTO obtenerAccionPorId(Long id) {
+    public Accion obtenerAccionPorId(Long id) {
         AccionDTO a = repositorio.findById(id).orElseThrow(()
                 -> new ResourceNotFoundException("Accion","id",id));
+        Accion accion = mapper.toDominio(a);
         aumentarPrecios();
-
-        return a;
+        return accion;
     }
 
 
@@ -62,17 +70,18 @@ public class AccionServicioImp implements IAccionServicio {
     }
 
     @Override
-    public AccionDTO cambiarPrecioAccion(Long id, double precio){
+    public Accion cambiarPrecioAccion(Long id, double precio){
         AccionDTO a = repositorio.findById(id).orElseThrow(()
                 -> new ResourceNotFoundException("Accion","id",id));
-        a.setPrecioAnterior(a.getPrecioActual());
-        a.setPrecioActual(precio);
-        cambiarUmbrales(a);
-        return a;
+        Accion accion = mapper.toDominio(a);
+        accion.setPrecioAnterior(accion.getPrecioActual());
+        accion.setPrecioActual(precio);
+        cambiarUmbrales(accion);
+        return accion;
     }
 
     @Override
-    public void cambiarUmbrales(AccionDTO a){
+    public void cambiarUmbrales(Accion a){
         if(a.getPrecioActual() > a.getUmbralSuperior()){
             double aumentarUmbral = a.getUmbralSuperior()*0.5 + a.getUmbralSuperior();
             a.setUmbralSuperior(aumentarUmbral);
@@ -89,10 +98,11 @@ public class AccionServicioImp implements IAccionServicio {
             Random rand = new Random();
             int numeroAleatorio = rand.nextInt(0, repositorio.findAll().size());
             AccionDTO a = repositorio.findAll().get(numeroAleatorio);
-            double aumento = a.getPrecioActual() * 0.2 + a.getPrecioActual();
-            a.setPrecioAnterior(a.getPrecioActual());
-            a.setPrecioActual(aumento);
-            cambiarUmbrales(a);
+            Accion accion = mapper.toDominio(a);
+            double aumento = accion.getPrecioActual() * 0.2 + accion.getPrecioActual();
+            accion.setPrecioAnterior(accion.getPrecioActual());
+            accion.setPrecioActual(aumento);
+            cambiarUmbrales(accion);
         }
     }
 }

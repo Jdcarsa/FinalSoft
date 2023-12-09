@@ -44,4 +44,13 @@ public class AccionDTO {
     @Column(name = "umbralInferior", nullable = false)
     private double umbralInferior;
 
+    public AccionDTO(String nombreAccion,
+                     double precioActual,  double precioAnterior,
+                     double umbralSuperior,  double umbralInferior) {
+        this.nombreAccion = nombreAccion;
+        this.precioActual = precioActual;
+        this.precioAnterior = precioAnterior;
+        this.umbralSuperior = umbralSuperior;
+        this.umbralInferior = umbralInferior;
+    }
 }

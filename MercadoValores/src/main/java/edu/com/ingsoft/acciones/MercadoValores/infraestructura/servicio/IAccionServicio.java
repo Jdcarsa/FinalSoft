@@ -2,6 +2,7 @@ package edu.com.ingsoft.acciones.MercadoValores.infraestructura.servicio;
 
 
 
+import edu.com.ingsoft.acciones.MercadoValores.dominio.modelo.Accion;
 import edu.com.ingsoft.acciones.MercadoValores.infraestructura.dto.AccionDTO;
 
 import java.util.List;
@@ -13,13 +14,13 @@ public interface IAccionServicio {
      * @param a, una entidad de clase accion
      * @return La accion registrada
      */
-    public AccionDTO guardarAccion(AccionDTO a);
+    public Accion guardarAccion(Accion a);
 
     /**
      * @brief obtiene todas las acciones que se encuetran en la base de datos
      * @return una lista con las acciones
      */
-    public List<AccionDTO> obtenerAcciones();
+    public List<Accion> obtenerAcciones();
 
     /**
      * @brief Actualiza una accion por su id
@@ -27,14 +28,14 @@ public interface IAccionServicio {
      * @param accionDTOActualizada nueva informacion de la accion
      * @return la accion con la nueva informacion
      */
-    public AccionDTO actualizarAccion(Long id, AccionDTO accionDTOActualizada);
+    public Accion actualizarAccion(Long id, AccionDTO accionDTOActualizada);
 
     /**
      * @brief Busca una accion por su id
      * @param id de la accion a buscar
      * @return la accion
      */
-    public AccionDTO obtenerAccionPorId(Long id);
+    public Accion obtenerAccionPorId(Long id);
 
     /**
      * @brief Busca una accion por su id y modifica su precio actual
@@ -42,7 +43,7 @@ public interface IAccionServicio {
      * @param precio el nuevo precio de la accion
      * @return la accion con la nueva informacion
      */
-    public AccionDTO cambiarPrecioAccion(Long id, double precio);
+    public Accion cambiarPrecioAccion(Long id, double precio);
 
     /**
      * @brief Busca una accion por su id y la elimina
@@ -55,7 +56,7 @@ public interface IAccionServicio {
      * y los modifica
      * @param a Accion a verificar los umbrales
      */
-    public void cambiarUmbrales(AccionDTO a);
+    public void cambiarUmbrales(Accion a);
 
     /**
      * @brief Aumenta el precio de cualquier accion de manera aletoria

@@ -2,7 +2,10 @@ package edu.com.ingsoft.acciones.MercadoValores.controladorTest;
 
 
 import edu.com.ingsoft.acciones.MercadoValores.aplicacion.CRUD.AccionCRUD;
+import edu.com.ingsoft.acciones.MercadoValores.dominio.modelo.Accion;
 import edu.com.ingsoft.acciones.MercadoValores.infraestructura.dto.AccionDTO;
+import edu.com.ingsoft.acciones.MercadoValores.infraestructura.mapper.AccionMapperImp;
+import edu.com.ingsoft.acciones.MercadoValores.infraestructura.mapper.IAccionMapper;
 import edu.com.ingsoft.acciones.MercadoValores.infraestructura.servicio.AccionServicioImp;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,6 +33,8 @@ public class Accion1CRUDTest {
     @Mock
     AccionServicioImp servicioImp;
 
+    private IAccionMapper mapper = new AccionMapperImp();
+
     @BeforeEach
     public  void setUp() throws Exception{
         MockitoAnnotations.openMocks(this);
@@ -43,13 +48,13 @@ public class Accion1CRUDTest {
     @Test
     public void testAccionAgregada() throws Exception{
         AccionDTO accionDTO = new AccionDTO("Totto",7000,0,28000,1000);
+        Accion accion = mapper.toDominio(accionDTO);
+        when(servicioImp.guardarAccion(accion)).thenReturn(accion);
 
-        when(servicioImp.guardarAccion(accionDTO)).thenReturn(accionDTO);
-
-        ResponseEntity<AccionDTO> response = controlador.guardar(accionDTO);
+        ResponseEntity<Accion> response = controlador.guardar(accion);
 
         assertEquals(response.getStatusCode(), HttpStatus.CREATED);
-        assertEquals(response.getBody(), accionDTO);
+        assertEquals(response.getBody(), accion);
     }
 
     /**
@@ -61,12 +66,13 @@ public class Accion1CRUDTest {
         AccionDTO accionDTO11 = new AccionDTO("Totto",7000,0,28000,1000);
         AccionDTO accionDTO12 = new AccionDTO("Bata",7000,0,28000,1000);
         List<AccionDTO> acciones = Arrays.asList(accionDTO11, accionDTO12);
-        when(servicioImp.obtenerAcciones()).thenReturn(acciones);
+        List<Accion> accionList = mapper.toDominioList(acciones);
+        when(servicioImp.obtenerAcciones()).thenReturn(accionList);
 
-        ResponseEntity<List<AccionDTO>> response = controlador.obtenerAcciones();
+        ResponseEntity<List<Accion>> response = controlador.obtenerAcciones();
 
         assertEquals(response.getStatusCode(), HttpStatus.FOUND);
-        assertEquals(response.getBody(), acciones);
+        assertEquals(response.getBody(), accionList);
     }
 
 
@@ -79,13 +85,13 @@ public class Accion1CRUDTest {
     public void testBuscarAccionId()throws  Exception{
         Long id = 1L;
         AccionDTO accionDTO = new AccionDTO("Totto",7000,0,28000,1000);
+        Accion accion = mapper.toDominio(accionDTO);
+        when(servicioImp.obtenerAccionPorId(id)).thenReturn(accion);
 
-        when(servicioImp.obtenerAccionPorId(id)).thenReturn(accionDTO);
-
-        ResponseEntity<AccionDTO> response = controlador.obtenerAccion(id);
+        ResponseEntity<Accion> response = controlador.obtenerAccion(id);
 
         assertEquals(response.getStatusCode(), HttpStatus.FOUND);
-        assertEquals(response.getBody(), accionDTO);
+        assertEquals(response.getBody(), accion);
     }
 
     @Test
@@ -93,24 +99,26 @@ public class Accion1CRUDTest {
         Long id = 1L;
         AccionDTO accionDTO11 = new AccionDTO("Totto",7000,0,28000,1000);
         AccionDTO accionDTO12 = new AccionDTO("Bata",7000,0,28000,1000);
-        when(servicioImp.actualizarAccion(id, accionDTO12)).thenReturn(accionDTO12);
+        Accion accion = mapper.toDominio(accionDTO12);
+        when(servicioImp.actualizarAccion(id, accionDTO12)).thenReturn(accion);
 
-        ResponseEntity<AccionDTO> response = controlador.actualizar(accionDTO12,id);
+        ResponseEntity<Accion> response = controlador.actualizar(accionDTO12,id);
 
         assertEquals(response.getStatusCode(), HttpStatus.OK);
-        assertEquals(response.getBody(), accionDTO12);
+        assertEquals(response.getBody(), accion);
     }
 
     @Test
     public void testActualizarPrecioAccion()throws  Exception{
         Long id = 1L;
         AccionDTO accionDTO = new AccionDTO("Totto",7000,0,28000,1000);
-        when(servicioImp.cambiarPrecioAccion(id,8000)).thenReturn(accionDTO);
+        Accion accion = mapper.toDominio(accionDTO);
+        when(servicioImp.cambiarPrecioAccion(id,8000)).thenReturn(accion);
 
-        ResponseEntity<AccionDTO> response = controlador.actualizarPrecio(8000,id);
+        ResponseEntity<Accion> response = controlador.actualizarPrecio(8000,id);
 
         assertEquals(response.getStatusCode(), HttpStatus.OK);
-        assertEquals(response.getBody(), accionDTO);
+        assertEquals(response.getBody(), accion);
     }
 
     @Test
