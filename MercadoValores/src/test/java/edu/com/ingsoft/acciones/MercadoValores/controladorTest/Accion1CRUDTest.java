@@ -1,9 +1,9 @@
 package edu.com.ingsoft.acciones.MercadoValores.controladorTest;
 
 
-import edu.com.ingsoft.acciones.MercadoValores.controlador.AccionControlador;
-import edu.com.ingsoft.acciones.MercadoValores.entidades.Accion;
-import edu.com.ingsoft.acciones.MercadoValores.servicio.AccionServicioImp;
+import edu.com.ingsoft.acciones.MercadoValores.aplicacion.CRUD.AccionCRUD;
+import edu.com.ingsoft.acciones.MercadoValores.infraestructura.dto.AccionDTO;
+import edu.com.ingsoft.acciones.MercadoValores.infraestructura.servicio.AccionServicioImp;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -20,12 +20,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-public class AccionControladorTest {
+public class Accion1CRUDTest {
 
     private MockMvc mockMvc;
 
     @InjectMocks
-    private AccionControlador controlador;
+    private AccionCRUD controlador;
 
     @Mock
     AccionServicioImp servicioImp;
@@ -42,14 +42,14 @@ public class AccionControladorTest {
      */
     @Test
     public void testAccionAgregada() throws Exception{
-        Accion accion = new Accion("Totto",7000,0,28000,1000);
+        AccionDTO accionDTO = new AccionDTO("Totto",7000,0,28000,1000);
 
-        when(servicioImp.guardarAccion(accion)).thenReturn(accion);
+        when(servicioImp.guardarAccion(accionDTO)).thenReturn(accionDTO);
 
-        ResponseEntity<Accion> response = controlador.guardar(accion);
+        ResponseEntity<AccionDTO> response = controlador.guardar(accionDTO);
 
         assertEquals(response.getStatusCode(), HttpStatus.CREATED);
-        assertEquals(response.getBody(), accion);
+        assertEquals(response.getBody(), accionDTO);
     }
 
     /**
@@ -58,12 +58,12 @@ public class AccionControladorTest {
      */
     @Test
    public void testBuscarAcciones() throws  Exception{
-        Accion accion1 = new Accion("Totto",7000,0,28000,1000);
-        Accion accion2 = new Accion("Bata",7000,0,28000,1000);
-        List<Accion> acciones = Arrays.asList(accion1, accion2);
+        AccionDTO accionDTO11 = new AccionDTO("Totto",7000,0,28000,1000);
+        AccionDTO accionDTO12 = new AccionDTO("Bata",7000,0,28000,1000);
+        List<AccionDTO> acciones = Arrays.asList(accionDTO11, accionDTO12);
         when(servicioImp.obtenerAcciones()).thenReturn(acciones);
 
-        ResponseEntity<List<Accion>> response = controlador.obtenerAcciones();
+        ResponseEntity<List<AccionDTO>> response = controlador.obtenerAcciones();
 
         assertEquals(response.getStatusCode(), HttpStatus.FOUND);
         assertEquals(response.getBody(), acciones);
@@ -78,45 +78,45 @@ public class AccionControladorTest {
     @Test
     public void testBuscarAccionId()throws  Exception{
         Long id = 1L;
-        Accion accion = new Accion("Totto",7000,0,28000,1000);
+        AccionDTO accionDTO = new AccionDTO("Totto",7000,0,28000,1000);
 
-        when(servicioImp.obtenerAccionPorId(id)).thenReturn(accion);
+        when(servicioImp.obtenerAccionPorId(id)).thenReturn(accionDTO);
 
-        ResponseEntity<Accion> response = controlador.obtenerAccion(id);
+        ResponseEntity<AccionDTO> response = controlador.obtenerAccion(id);
 
         assertEquals(response.getStatusCode(), HttpStatus.FOUND);
-        assertEquals(response.getBody(), accion);
+        assertEquals(response.getBody(), accionDTO);
     }
 
     @Test
     public void testActualizarAccion()throws  Exception{
         Long id = 1L;
-        Accion accion1 = new Accion("Totto",7000,0,28000,1000);
-        Accion accion2 = new Accion("Bata",7000,0,28000,1000);
-        when(servicioImp.actualizarAccion(id,accion2)).thenReturn(accion2);
+        AccionDTO accionDTO11 = new AccionDTO("Totto",7000,0,28000,1000);
+        AccionDTO accionDTO12 = new AccionDTO("Bata",7000,0,28000,1000);
+        when(servicioImp.actualizarAccion(id, accionDTO12)).thenReturn(accionDTO12);
 
-        ResponseEntity<Accion> response = controlador.actualizar(accion2,id);
+        ResponseEntity<AccionDTO> response = controlador.actualizar(accionDTO12,id);
 
         assertEquals(response.getStatusCode(), HttpStatus.OK);
-        assertEquals(response.getBody(), accion2);
+        assertEquals(response.getBody(), accionDTO12);
     }
 
     @Test
     public void testActualizarPrecioAccion()throws  Exception{
         Long id = 1L;
-        Accion accion = new Accion("Totto",7000,0,28000,1000);
-        when(servicioImp.cambiarPrecioAccion(id,8000)).thenReturn(accion);
+        AccionDTO accionDTO = new AccionDTO("Totto",7000,0,28000,1000);
+        when(servicioImp.cambiarPrecioAccion(id,8000)).thenReturn(accionDTO);
 
-        ResponseEntity<Accion> response = controlador.actualizarPrecio(8000,id);
+        ResponseEntity<AccionDTO> response = controlador.actualizarPrecio(8000,id);
 
         assertEquals(response.getStatusCode(), HttpStatus.OK);
-        assertEquals(response.getBody(), accion);
+        assertEquals(response.getBody(), accionDTO);
     }
 
     @Test
     public void testEliminarAccion()throws  Exception{
         Long id = 1L;
-        Accion accion = new Accion("Totto",7000,0,28000,1000);
+        AccionDTO accionDTO = new AccionDTO("Totto",7000,0,28000,1000);
 
         ResponseEntity<String> response = controlador.borrar(id);
 

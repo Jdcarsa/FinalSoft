@@ -1,4 +1,4 @@
-package edu.com.ingsoft.acciones.MercadoValores.excepciones;
+package edu.com.ingsoft.acciones.MercadoValores.infraestructura.excepciones;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

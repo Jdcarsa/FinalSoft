@@ -1,9 +1,9 @@
-package edu.com.ingsoft.acciones.MercadoValores.servicio;
+package edu.com.ingsoft.acciones.MercadoValores.infraestructura.servicio;
 
 
-import edu.com.ingsoft.acciones.MercadoValores.excepciones.ResourceNotFoundException;
-import edu.com.ingsoft.acciones.MercadoValores.entidades.Accion;
-import edu.com.ingsoft.acciones.MercadoValores.repositorio.IAccionRepositorio;
+import edu.com.ingsoft.acciones.MercadoValores.infraestructura.excepciones.ResourceNotFoundException;
+import edu.com.ingsoft.acciones.MercadoValores.infraestructura.dto.AccionDTO;
+import edu.com.ingsoft.acciones.MercadoValores.dominio.repositorio.IAccionRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,24 +17,24 @@ public class AccionServicioImp implements IAccionServicio {
     private IAccionRepositorio repositorio;
 
     @Override
-    public Accion guardarAccion(Accion a) {
+    public AccionDTO guardarAccion(AccionDTO a) {
         aumentarPrecios();
         return repositorio.save(a);
     }
 
     @Override
-    public List<Accion> obtenerAcciones() {
+    public List<AccionDTO> obtenerAcciones() {
         aumentarPrecios();
         return repositorio.findAll();
     }
 
     @Override
-    public Accion actualizarAccion(Long id, Accion accionActualizada) {
-        Accion a = repositorio.findById(id).orElseThrow(()
+    public AccionDTO actualizarAccion(Long id, AccionDTO accionDTOActualizada) {
+        AccionDTO a = repositorio.findById(id).orElseThrow(()
                 -> new ResourceNotFoundException("Accion","id",id));
-        a.setNombreAccion(accionActualizada.getNombreAccion());
-        a.setPrecioActual(accionActualizada.getPrecioActual());
-        a.setPrecioAnterior(accionActualizada.getPrecioAnterior());
+        a.setNombreAccion(accionDTOActualizada.getNombreAccion());
+        a.setPrecioActual(accionDTOActualizada.getPrecioActual());
+        a.setPrecioAnterior(accionDTOActualizada.getPrecioAnterior());
         a.setUmbralSuperior(a.getUmbralSuperior());
         a.setUmbralInferior(a.getUmbralInferior());
         aumentarPrecios();
@@ -43,8 +43,8 @@ public class AccionServicioImp implements IAccionServicio {
     }
 
     @Override
-    public Accion obtenerAccionPorId(Long id) {
-        Accion a = repositorio.findById(id).orElseThrow(()
+    public AccionDTO obtenerAccionPorId(Long id) {
+        AccionDTO a = repositorio.findById(id).orElseThrow(()
                 -> new ResourceNotFoundException("Accion","id",id));
         aumentarPrecios();
 
@@ -54,7 +54,7 @@ public class AccionServicioImp implements IAccionServicio {
 
     @Override
     public void removerAccion(Long id) {
-        Accion a = repositorio.findById(id).orElseThrow(()
+        AccionDTO a = repositorio.findById(id).orElseThrow(()
                 -> new ResourceNotFoundException("Accion","id",id));
         repositorio.delete(a);
         aumentarPrecios();
@@ -62,8 +62,8 @@ public class AccionServicioImp implements IAccionServicio {
     }
 
     @Override
-    public Accion cambiarPrecioAccion(Long id, double precio){
-        Accion a = repositorio.findById(id).orElseThrow(()
+    public AccionDTO cambiarPrecioAccion(Long id, double precio){
+        AccionDTO a = repositorio.findById(id).orElseThrow(()
                 -> new ResourceNotFoundException("Accion","id",id));
         a.setPrecioAnterior(a.getPrecioActual());
         a.setPrecioActual(precio);
@@ -72,7 +72,7 @@ public class AccionServicioImp implements IAccionServicio {
     }
 
     @Override
-    public void cambiarUmbrales(Accion a){
+    public void cambiarUmbrales(AccionDTO a){
         if(a.getPrecioActual() > a.getUmbralSuperior()){
             double aumentarUmbral = a.getUmbralSuperior()*0.5 + a.getUmbralSuperior();
             a.setUmbralSuperior(aumentarUmbral);
@@ -88,7 +88,7 @@ public class AccionServicioImp implements IAccionServicio {
         if(!repositorio.findAll().isEmpty()) {
             Random rand = new Random();
             int numeroAleatorio = rand.nextInt(0, repositorio.findAll().size());
-            Accion a = repositorio.findAll().get(numeroAleatorio);
+            AccionDTO a = repositorio.findAll().get(numeroAleatorio);
             double aumento = a.getPrecioActual() * 0.2 + a.getPrecioActual();
             a.setPrecioAnterior(a.getPrecioActual());
             a.setPrecioActual(aumento);

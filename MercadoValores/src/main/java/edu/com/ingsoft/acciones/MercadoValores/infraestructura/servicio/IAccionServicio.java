@@ -1,8 +1,8 @@
-package edu.com.ingsoft.acciones.MercadoValores.servicio;
+package edu.com.ingsoft.acciones.MercadoValores.infraestructura.servicio;
 
 
 
-import edu.com.ingsoft.acciones.MercadoValores.entidades.Accion;
+import edu.com.ingsoft.acciones.MercadoValores.infraestructura.dto.AccionDTO;
 
 import java.util.List;
 
@@ -13,28 +13,28 @@ public interface IAccionServicio {
      * @param a, una entidad de clase accion
      * @return La accion registrada
      */
-    public Accion guardarAccion(Accion a);
+    public AccionDTO guardarAccion(AccionDTO a);
 
     /**
      * @brief obtiene todas las acciones que se encuetran en la base de datos
      * @return una lista con las acciones
      */
-    public List<Accion> obtenerAcciones();
+    public List<AccionDTO> obtenerAcciones();
 
     /**
      * @brief Actualiza una accion por su id
      * @param id de la accion a actualizar
-     * @param accionActualizada nueva informacion de la accion
+     * @param accionDTOActualizada nueva informacion de la accion
      * @return la accion con la nueva informacion
      */
-    public Accion actualizarAccion(Long id, Accion accionActualizada);
+    public AccionDTO actualizarAccion(Long id, AccionDTO accionDTOActualizada);
 
     /**
      * @brief Busca una accion por su id
      * @param id de la accion a buscar
      * @return la accion
      */
-    public Accion obtenerAccionPorId(Long id);
+    public AccionDTO obtenerAccionPorId(Long id);
 
     /**
      * @brief Busca una accion por su id y modifica su precio actual
@@ -42,7 +42,7 @@ public interface IAccionServicio {
      * @param precio el nuevo precio de la accion
      * @return la accion con la nueva informacion
      */
-    public Accion cambiarPrecioAccion(Long id,double precio);
+    public AccionDTO cambiarPrecioAccion(Long id, double precio);
 
     /**
      * @brief Busca una accion por su id y la elimina
@@ -55,7 +55,7 @@ public interface IAccionServicio {
      * y los modifica
      * @param a Accion a verificar los umbrales
      */
-    public void cambiarUmbrales(Accion a);
+    public void cambiarUmbrales(AccionDTO a);
 
     /**
      * @brief Aumenta el precio de cualquier accion de manera aletoria
