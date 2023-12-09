@@ -2,7 +2,7 @@ package edu.com.ingsoft.acciones.MercadoValores.repositorio;
 
 
 
-import edu.com.ingsoft.acciones.MercadoValores.modelo.Accion;
+import edu.com.ingsoft.acciones.MercadoValores.entidades.Accion;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

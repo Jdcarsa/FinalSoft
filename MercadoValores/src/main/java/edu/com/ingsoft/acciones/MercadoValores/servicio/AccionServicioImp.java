@@ -2,12 +2,11 @@ package edu.com.ingsoft.acciones.MercadoValores.servicio;
 
 
 import edu.com.ingsoft.acciones.MercadoValores.excepciones.ResourceNotFoundException;
-import edu.com.ingsoft.acciones.MercadoValores.modelo.Accion;
+import edu.com.ingsoft.acciones.MercadoValores.entidades.Accion;
 import edu.com.ingsoft.acciones.MercadoValores.repositorio.IAccionRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 

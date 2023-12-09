@@ -5,11 +5,10 @@ import edu.com.ingsoft.acciones.MercadoValores.servicio.IAccionServicio;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import edu.com.ingsoft.acciones.MercadoValores.modelo.Accion;
+import edu.com.ingsoft.acciones.MercadoValores.entidades.Accion;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 
 @RestController

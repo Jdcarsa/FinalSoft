@@ -1,4 +1,4 @@
-package edu.com.ingsoft.acciones.MercadoValores.modelo;
+package edu.com.ingsoft.acciones.MercadoValores.entidades;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;

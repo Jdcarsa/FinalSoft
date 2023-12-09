@@ -2,9 +2,8 @@ package edu.com.ingsoft.acciones.MercadoValores.servicio;
 
 
 
-import edu.com.ingsoft.acciones.MercadoValores.modelo.Accion;
+import edu.com.ingsoft.acciones.MercadoValores.entidades.Accion;
 
-import java.util.HashMap;
 import java.util.List;
 
 public interface IAccionServicio {

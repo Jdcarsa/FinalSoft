@@ -2,7 +2,7 @@ package edu.com.ingsoft.acciones.MercadoValores.controladorTest;
 
 
 import edu.com.ingsoft.acciones.MercadoValores.controlador.AccionControlador;
-import edu.com.ingsoft.acciones.MercadoValores.modelo.Accion;
+import edu.com.ingsoft.acciones.MercadoValores.entidades.Accion;
 import edu.com.ingsoft.acciones.MercadoValores.servicio.AccionServicioImp;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
