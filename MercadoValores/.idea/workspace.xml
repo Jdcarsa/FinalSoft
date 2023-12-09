@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b9fdb8ea-ac38-4f2b-b6d0-c7890bb7007f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/com/ingsoft/acciones/MercadoValores/MercadoValoresApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/com/ingsoft/acciones/MercadoValores/aplicacion/CRUD/AccionCRUD.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/com/ingsoft/acciones/MercadoValores/dominio/modelo/Accion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/com/ingsoft/acciones/MercadoValores/dominio/repositorio/IAccionRepositorio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/com/ingsoft/acciones/MercadoValores/infraestructura/configuracion/AppConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/com/ingsoft/acciones/MercadoValores/infraestructura/dto/AccionDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/com/ingsoft/acciones/MercadoValores/infraestructura/excepciones/ResourceNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/com/ingsoft/acciones/MercadoValores/infraestructura/mapper/AccionMapperImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/com/ingsoft/acciones/MercadoValores/infraestructura/mapper/IAccionMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/com/ingsoft/acciones/MercadoValores/infraestructura/servicio/AccionServicioImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/com/ingsoft/acciones/MercadoValores/infraestructura/servicio/IAccionServicio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/com/ingsoft/acciones/MercadoValores/MercadoValoresApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/com/ingsoft/acciones/MercadoValores/controladorTest/Accion1CRUDTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MiAgenteFinanciero/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RabbitMQService/pom.xml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2XrV2Bu1gAPtC74BjOQPgpWu8tz" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/ideapad330S/Documents/GitHub/FinalSoft/ProyectoFinal",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ideapad330S\Documents\GitHub\FinalSoft\MercadoValores\src\main\java\edu\com\ingsoft\acciones\MercadoValores\infraestructura\configuracion" />
+      <recent name="C:\Users\ideapad330S\Documents\GitHub\Parcial-SpringBoot-Postman\MercadoValores\src\main\java\edu\com\ingsoft\acciones\MercadoValores" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.Accion1CRUDTest.testAccionAgregada">
+    <configuration name="MercadoValoresApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="edu.com.ingsoft.acciones.MercadoValores.MercadoValoresApplication" />
+      <module name="MercadoValores" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.com.ingsoft.acciones.MercadoValores.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Accion1CRUDTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MercadoValores" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.com.ingsoft.acciones.MercadoValores.controladorTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.com.ingsoft.acciones.MercadoValores.controladorTest" />
+      <option name="MAIN_CLASS_NAME" value="edu.com.ingsoft.acciones.MercadoValores.controladorTest.Accion1CRUDTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Accion1CRUDTest.testAccionAgregada" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MercadoValores" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.com.ingsoft.acciones.MercadoValores.controladorTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.com.ingsoft.acciones.MercadoValores.controladorTest" />
+      <option name="MAIN_CLASS_NAME" value="edu.com.ingsoft.acciones.MercadoValores.controladorTest.Accion1CRUDTest" />
+      <option name="METHOD_NAME" value="testAccionAgregada" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Accion1CRUDTest.testActualizarPrecioAccion" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MercadoValores" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.com.ingsoft.acciones.MercadoValores.controladorTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.com.ingsoft.acciones.MercadoValores.controladorTest" />
+      <option name="MAIN_CLASS_NAME" value="edu.com.ingsoft.acciones.MercadoValores.controladorTest.Accion1CRUDTest" />
+      <option name="METHOD_NAME" value="testActualizarPrecioAccion" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Accion1CRUDTest.testEliminarAccion" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MercadoValores" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.com.ingsoft.acciones.MercadoValores.controladorTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.com.ingsoft.acciones.MercadoValores.controladorTest" />
+      <option name="MAIN_CLASS_NAME" value="edu.com.ingsoft.acciones.MercadoValores.controladorTest.Accion1CRUDTest" />
+      <option name="METHOD_NAME" value="testEliminarAccion" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.Accion1CRUDTest.testAccionAgregada" />
+        <item itemvalue="Application.MercadoValoresApplication" />
+        <item itemvalue="JUnit.Accion1CRUDTest" />
+        <item itemvalue="JUnit.Accion1CRUDTest.testEliminarAccion" />
+        <item itemvalue="JUnit.Accion1CRUDTest.testActualizarPrecioAccion" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b9fdb8ea-ac38-4f2b-b6d0-c7890bb7007f" name="Changes" comment="" />
+      <created>1699386979348</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699386979348</updated>
+    </task>
+    <servers />
+  </component>
+</project>
