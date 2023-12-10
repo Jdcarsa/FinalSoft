@@ -19,36 +19,36 @@ public class AccionCRUD {
     private IAccionServicio servicio;
 
     @PostMapping({"/accion/guardar"})
-    public ResponseEntity<Accion> guardar(@Valid @RequestBody Accion a){
+    public ResponseEntity<Accion> guardar(@Valid @RequestBody Accion a) throws Exception {
         return  new ResponseEntity<>(servicio.guardarAccion(a), HttpStatus.CREATED);
     }
 
     @GetMapping({"accion/obtener"})
-    public ResponseEntity<List<Accion>> obtenerAcciones (){
+    public ResponseEntity<List<Accion>> obtenerAcciones () throws Exception {
         return new ResponseEntity<>(servicio.obtenerAcciones(),HttpStatus.FOUND);
     }
 
 
 
     @GetMapping({"accion/obtener/{id}"})
-    public ResponseEntity<Accion> obtenerAccion(@Valid @PathVariable(name = "id") Long id){
+    public ResponseEntity<Accion> obtenerAccion(@Valid @PathVariable(name = "id") Long id) throws Exception {
         return new ResponseEntity<>(servicio.obtenerAccionPorId(id),HttpStatus.FOUND);
     }
 
 
     @PutMapping({"accion/actualizar/{id}"})
     public ResponseEntity<Accion> actualizar(@Valid @RequestBody AccionDTO upA ,
-                                                @Valid @PathVariable(name = "id") Long id ){
+                                                @Valid @PathVariable(name = "id") Long id ) throws Exception {
         return ResponseEntity.ok(servicio.actualizarAccion(id,upA));
     }
 
     @PutMapping({"accion/actualizarPrecio/{id}"})
     public ResponseEntity<Accion> actualizarPrecio(@Valid @RequestParam double precio ,
-                                                      @Valid @PathVariable(name = "id") Long id ){
+                                                      @Valid @PathVariable(name = "id") Long id ) throws Exception {
         return ResponseEntity.ok(servicio.cambiarPrecioAccion(id, precio));
     }
     @DeleteMapping({"accion/borrar/{id}"})
-    public ResponseEntity<String> borrar(@Valid @PathVariable(name = "id") Long id){
+    public ResponseEntity<String> borrar(@Valid @PathVariable(name = "id") Long id) throws Exception {
         servicio.removerAccion(id);
         return new ResponseEntity<>("ACCION " + id + " ELIMINADA" ,HttpStatus.OK);
     }

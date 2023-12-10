@@ -8,7 +8,7 @@ public class RabbitNotificador {
     public RabbitNotificador(){
     }
 
-    public void notificar(String mensaje){
+    public void notificar(String mensaje) throws Exception{
         Manager manager = Manager.getInstance();
         INotificador noti = manager.getNotificador("notificador");
         noti.publish(mensaje);

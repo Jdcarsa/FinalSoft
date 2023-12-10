@@ -25,7 +25,7 @@ public class AccionServicioImp implements IAccionServicio {
     private RabbitNotificador notificador = new RabbitNotificador();
 
     @Override
-    public Accion guardarAccion(Accion a) {
+    public Accion guardarAccion(Accion a) throws Exception {
         aumentarPrecios();
         AccionDTO aDTO = mapper.toDTO(a);
         Accion accionGuardada = mapper.toDominio(repositorio.save(aDTO));
@@ -33,14 +33,14 @@ public class AccionServicioImp implements IAccionServicio {
     }
 
     @Override
-    public List<Accion> obtenerAcciones() {
+    public List<Accion> obtenerAcciones() throws Exception {
         aumentarPrecios();
         List<Accion> acciones = mapper.toDominioList(repositorio.findAll());
         return acciones;
     }
 
     @Override
-    public Accion actualizarAccion(Long id, AccionDTO accionDTOActualizada) {
+    public Accion actualizarAccion(Long id, AccionDTO accionDTOActualizada) throws Exception {
         AccionDTO a = repositorio.findById(id).orElseThrow(()
                 -> new ResourceNotFoundException("Accion","id",id));
         a.setNombreAccion(accionDTOActualizada.getNombreAccion());
@@ -54,7 +54,7 @@ public class AccionServicioImp implements IAccionServicio {
     }
 
     @Override
-    public Accion obtenerAccionPorId(Long id) {
+    public Accion obtenerAccionPorId(Long id) throws Exception {
         AccionDTO a = repositorio.findById(id).orElseThrow(()
                 -> new ResourceNotFoundException("Accion","id",id));
         Accion accion = mapper.toDominio(a);
@@ -64,16 +64,15 @@ public class AccionServicioImp implements IAccionServicio {
 
 
     @Override
-    public void removerAccion(Long id) {
+    public void removerAccion(Long id) throws Exception {
         AccionDTO a = repositorio.findById(id).orElseThrow(()
                 -> new ResourceNotFoundException("Accion","id",id));
         repositorio.delete(a);
         aumentarPrecios();
-
     }
 
     @Override
-    public Accion cambiarPrecioAccion(Long id, double precio){
+    public Accion cambiarPrecioAccion(Long id, double precio) throws Exception {
         AccionDTO a = repositorio.findById(id).orElseThrow(()
                 -> new ResourceNotFoundException("Accion","id",id));
         Accion accion = mapper.toDominio(a);
@@ -84,7 +83,7 @@ public class AccionServicioImp implements IAccionServicio {
     }
 
     @Override
-    public void cambiarUmbrales(Accion a){
+    public void cambiarUmbrales(Accion a) throws Exception {
         String ms;
         if(a.getPrecioActual() > a.getUmbralSuperior()){
             double aumentarUmbral = a.getUmbralSuperior()*0.5 + a.getUmbralSuperior();
@@ -104,7 +103,7 @@ public class AccionServicioImp implements IAccionServicio {
     }
 
     @Override
-    public void aumentarPrecios(){
+    public void aumentarPrecios() throws Exception {
         if(!repositorio.findAll().isEmpty()) {
             Random rand = new Random();
             int numeroAleatorio = rand.nextInt(0, repositorio.findAll().size());

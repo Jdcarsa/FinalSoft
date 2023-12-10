@@ -30,7 +30,7 @@ public class Manager {
         instance = new Manager();
         instance.loadProperties(basePath);
         if (instance.serviceProperties.isEmpty()) {
-            throw new Exception("Could not initialize plugins");
+            throw new Exception("Could not initialize services");
         }
 
     }
@@ -69,8 +69,6 @@ public class Manager {
     }
 
     private void loadProperties(String basePath){
-
-
         try {
             String filePath = basePath+FILE_NAME;
             filePath = URLDecoder.decode(filePath, "UTF-8");
@@ -79,7 +77,7 @@ public class Manager {
                 serviceProperties.load(stream);
 
             } catch (IOException ex) {
-                Logger.getLogger("DeliveryPluginManager").log(Level.SEVERE, "Error al ejecutar la aplicación", ex);
+                Logger.getLogger("Error load properties").log(Level.SEVERE, "Error al ejecutar la aplicación", ex);
             }
 
         } catch (UnsupportedEncodingException ex) {
