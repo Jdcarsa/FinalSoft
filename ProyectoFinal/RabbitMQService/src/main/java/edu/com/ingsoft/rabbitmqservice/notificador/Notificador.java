@@ -11,19 +11,19 @@ import java.util.logging.Logger;
 
 public class Notificador  implements INotificador{
 
-    private final static String QUEUE_NAME = "notificacion";
+    private static final String EXCHANGE_NAME = "notificacion";
 
     @Override
-    public void publish(String msg) {
+    public void publish(String msg) throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
-        try ( Connection connection = factory.newConnection();
-              Channel channel = connection.createChannel()) {
-            channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-            channel.basicPublish("", QUEUE_NAME, null, msg.getBytes("UTF-8"));
+        try (Connection connection = factory.newConnection();
+             Channel channel = connection.createChannel()) {
+            channel.exchangeDeclare(EXCHANGE_NAME, "fanout");
+
+
+            channel.basicPublish(EXCHANGE_NAME, "", null, msg.getBytes("UTF-8"));
             System.out.println(" [x] Sent '" + msg + "'");
-        } catch (IOException | TimeoutException ex) {
-            Logger.getLogger(Notificador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

@@ -90,14 +90,14 @@ public class AccionServicioImp implements IAccionServicio {
             double aumentarUmbral = a.getUmbralSuperior()*0.5 + a.getUmbralSuperior();
             a.setUmbralSuperior(aumentarUmbral);
             ms = "La accion " +a.getNombreAccion() +
-                    " ha rebasado su umbral superior: " +a.getUmbralSuperior() +
+                    " ha rebasado su umbral superior , nuevo umbral : " +a.getUmbralSuperior() +
                     ", nuevo precio: " + a.getPrecioActual()+ ", precio anterior: " + a.getPrecioAnterior();
             notificador.notificar(ms);
         } else if (a.getPrecioActual() < a.getUmbralInferior()) {
             double disminuirUmbral = a.getUmbralInferior()/20 + a.getUmbralInferior();
             a.setUmbralInferior(disminuirUmbral);
             ms = "La accion " +a.getNombreAccion() +
-                    " ha rebasado su umbral inferior: " +a.getUmbralInferior() +
+                    " ha rebasado su umbral inferior, nuevo umbral: " +a.getUmbralInferior() +
                     ", nuevo precio: " + a.getPrecioActual()+ ", precio anterior: " + a.getPrecioAnterior();
             notificador.notificar(ms);
         }
