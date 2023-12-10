@@ -7,6 +7,7 @@ import edu.com.ingsoft.acciones.MercadoValores.infraestructura.dto.AccionDTO;
 import edu.com.ingsoft.acciones.MercadoValores.dominio.repositorio.IAccionRepositorio;
 import edu.com.ingsoft.acciones.MercadoValores.infraestructura.mapper.AccionMapperImp;
 import edu.com.ingsoft.acciones.MercadoValores.infraestructura.mapper.IAccionMapper;
+import edu.com.ingsoft.acciones.MercadoValores.infraestructura.rabbitService.RabbitNotificador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,8 @@ public class AccionServicioImp implements IAccionServicio {
     private IAccionRepositorio repositorio;
 
     private IAccionMapper mapper = new AccionMapperImp();
+
+    private RabbitNotificador notificador = new RabbitNotificador();
 
     @Override
     public Accion guardarAccion(Accion a) {
@@ -82,13 +85,21 @@ public class AccionServicioImp implements IAccionServicio {
 
     @Override
     public void cambiarUmbrales(Accion a){
+        String ms;
         if(a.getPrecioActual() > a.getUmbralSuperior()){
             double aumentarUmbral = a.getUmbralSuperior()*0.5 + a.getUmbralSuperior();
             a.setUmbralSuperior(aumentarUmbral);
-
+            ms = "La accion " +a.getNombreAccion() +
+                    " ha rebasado su umbral superior: " +a.getUmbralSuperior() +
+                    ", nuevo precio: " + a.getPrecioActual()+ ", precio anterior: " + a.getPrecioAnterior();
+            notificador.notificar(ms);
         } else if (a.getPrecioActual() < a.getUmbralInferior()) {
             double disminuirUmbral = a.getUmbralInferior()/20 + a.getUmbralInferior();
             a.setUmbralInferior(disminuirUmbral);
+            ms = "La accion " +a.getNombreAccion() +
+                    " ha rebasado su umbral inferior: " +a.getUmbralInferior() +
+                    ", nuevo precio: " + a.getPrecioActual()+ ", precio anterior: " + a.getPrecioAnterior();
+            notificador.notificar(ms);
         }
     }
 

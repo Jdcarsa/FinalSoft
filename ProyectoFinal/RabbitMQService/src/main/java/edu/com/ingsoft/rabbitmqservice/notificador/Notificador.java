@@ -1,4 +1,4 @@
-package edu.com.ingsof.rabbitmqservice.notificador;
+package edu.com.ingsoft.rabbitmqservice.notificador;
 
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.Connection;

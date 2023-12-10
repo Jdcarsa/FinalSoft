@@ -60,6 +60,11 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+	 <dependency>
+	  <groupId>edu.com.ingsoft.rabbitmqservice</groupId>
+	  <artifactId>RabbitMQService</artifactId>
+	  <version>1.0-SNAPSHOT</version>
+	 </dependency>
 	</dependencies>
 
 	<build>

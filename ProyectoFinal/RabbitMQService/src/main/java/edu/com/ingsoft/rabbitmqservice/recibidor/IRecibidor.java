@@ -1,4 +1,4 @@
-package edu.com.ingsof.rabbitmqservice.recibidor;
+package edu.com.ingsoft.rabbitmqservice.recibidor;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
