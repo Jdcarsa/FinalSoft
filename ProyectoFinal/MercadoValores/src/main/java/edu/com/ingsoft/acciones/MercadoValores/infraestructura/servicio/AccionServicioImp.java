@@ -46,8 +46,8 @@ public class AccionServicioImp implements IAccionServicio {
         a.setNombreAccion(accionDTOActualizada.getNombreAccion());
         a.setPrecioActual(accionDTOActualizada.getPrecioActual());
         a.setPrecioAnterior(accionDTOActualizada.getPrecioAnterior());
-        a.setUmbralSuperior(a.getUmbralSuperior());
-        a.setUmbralInferior(a.getUmbralInferior());
+        a.setUmbralSuperior(accionDTOActualizada.getUmbralSuperior());
+        a.setUmbralInferior(accionDTOActualizada.getUmbralInferior());
         aumentarPrecios();
         Accion accionActualizada = mapper.toDominio(repositorio.save(a));
         return accionActualizada;
@@ -92,6 +92,8 @@ public class AccionServicioImp implements IAccionServicio {
                     " ha rebasado su umbral superior , nuevo umbral : " +a.getUmbralSuperior() +
                     ", nuevo precio: " + a.getPrecioActual()+ ", precio anterior: " + a.getPrecioAnterior();
             notificador.notificar(ms);
+            AccionDTO aDTO = mapper.toDTO(a);
+            actualizarAccion(a.getIdAccion(),aDTO);
         } else if (a.getPrecioActual() < a.getUmbralInferior()) {
             double disminuirUmbral = a.getUmbralInferior()/20 + a.getUmbralInferior();
             a.setUmbralInferior(disminuirUmbral);
@@ -99,9 +101,9 @@ public class AccionServicioImp implements IAccionServicio {
                     " ha rebasado su umbral inferior, nuevo umbral: " +a.getUmbralInferior() +
                     ", nuevo precio: " + a.getPrecioActual()+ ", precio anterior: " + a.getPrecioAnterior();
             notificador.notificar(ms);
+            AccionDTO aDTO = mapper.toDTO(a);
+            actualizarAccion(a.getIdAccion(),aDTO);
         }
-        AccionDTO aDTO = mapper.toDTO(a);
-        actualizarAccion(a.getIdAccion(),aDTO);
     }
 
     @Override
