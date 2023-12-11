@@ -100,7 +100,8 @@ public class AccionServicioImp implements IAccionServicio {
                     ", nuevo precio: " + a.getPrecioActual()+ ", precio anterior: " + a.getPrecioAnterior();
             notificador.notificar(ms);
         }
-        guardarAccion(a);
+        AccionDTO aDTO = mapper.toDTO(a);
+        actualizarAccion(a.getIdAccion(),aDTO);
     }
 
     @Override
