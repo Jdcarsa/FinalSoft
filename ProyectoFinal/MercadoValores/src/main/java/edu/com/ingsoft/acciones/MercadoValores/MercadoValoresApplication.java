@@ -14,28 +14,8 @@ public class MercadoValoresApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(MercadoValoresApplication.class, args);
-		String basePath = getBaseFilePath();
-		try{
-			Manager.init(basePath);
-		} catch (Exception ex) {
-			Logger.getLogger("Application").log(Level.SEVERE, "Error al ejecutar la aplicación", ex);
-		}
 
 	}
 
-	private static String getBaseFilePath() {
-		String path = MercadoValoresApplication.class.getProtectionDomain().getCodeSource().getLocation().getPath();
 
-		File pathFile = new File(path);
-		if (pathFile.isFile()) {
-			path = pathFile.getParent();
-
-			if (!path.endsWith(File.separator)) {
-				path += File.separator;
-			}
-
-		}
-
-		return path;
-	}
 }

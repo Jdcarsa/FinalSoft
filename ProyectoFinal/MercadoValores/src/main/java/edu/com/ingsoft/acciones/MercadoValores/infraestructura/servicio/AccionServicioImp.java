@@ -78,7 +78,8 @@ public class AccionServicioImp implements IAccionServicio {
         Accion accion = mapper.toDominio(a);
         accion.setPrecioAnterior(accion.getPrecioActual());
         accion.setPrecioActual(precio);
-        cambiarUmbrales(accion);
+        AccionDTO dto = mapper.toDTO(accion);
+        repositorio.save(dto);
         return accion;
     }
 
@@ -92,8 +93,6 @@ public class AccionServicioImp implements IAccionServicio {
                     " ha rebasado su umbral superior , nuevo umbral : " +a.getUmbralSuperior() +
                     ", nuevo precio: " + a.getPrecioActual()+ ", precio anterior: " + a.getPrecioAnterior();
             notificador.notificar(ms);
-            AccionDTO aDTO = mapper.toDTO(a);
-            actualizarAccion(a.getIdAccion(),aDTO);
         } else if (a.getPrecioActual() < a.getUmbralInferior()) {
             double disminuirUmbral = a.getUmbralInferior()/20 + a.getUmbralInferior();
             a.setUmbralInferior(disminuirUmbral);
@@ -101,9 +100,9 @@ public class AccionServicioImp implements IAccionServicio {
                     " ha rebasado su umbral inferior, nuevo umbral: " +a.getUmbralInferior() +
                     ", nuevo precio: " + a.getPrecioActual()+ ", precio anterior: " + a.getPrecioAnterior();
             notificador.notificar(ms);
-            AccionDTO aDTO = mapper.toDTO(a);
-            actualizarAccion(a.getIdAccion(),aDTO);
         }
+        AccionDTO dto = mapper.toDTO(a);
+        repositorio.save(dto);
     }
 
     @Override
@@ -114,9 +113,9 @@ public class AccionServicioImp implements IAccionServicio {
             AccionDTO a = repositorio.findAll().get(numeroAleatorio);
             Accion accion = mapper.toDominio(a);
             double aumento = accion.getPrecioActual() * 0.2 + accion.getPrecioActual();
-            accion.setPrecioAnterior(accion.getPrecioActual());
-            accion.setPrecioActual(aumento);
-            cambiarUmbrales(accion);
+           accion.setPrecioAnterior(accion.getPrecioActual());
+           accion.setPrecioActual(aumento);
+           cambiarUmbrales(accion);
         }
     }
 }
