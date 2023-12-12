@@ -1,0 +1,473 @@
+{
+	"info": {
+		"_postman_id": "e49e2c97-e8c7-43e6-991c-e03fb00bc586",
+		"name": "BolsaDeValores",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28425697"
+	},
+	"item": [
+		{
+			"name": "PeticionesPostman",
+			"item": [
+				{
+					"name": "GuardarAccion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombreAccion\":\"Bancolombia\",\r\n    \"precioActual\":70000,\r\n    \"precioAnterior\":50000,\r\n    \"umbralSuperior\":200000,\r\n    \"umbralInferior\":10000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/accion/guardar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"accion",
+								"guardar"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "GuardarAccion",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombreAccion\":\"Bancolombia\",\r\n    \"precioActual\":70000,\r\n    \"precioAnterior\":50000,\r\n    \"umbralSuperior\":200000,\r\n    \"umbralInferior\":10000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/accion/guardar",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"accion",
+										"guardar"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Nov 2023 17:01:17 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"idAccion\": 3,\n    \"nombreAccion\": \"Bancolombia\",\n    \"precioActual\": 70000,\n    \"precioAnterior\": 50000,\n    \"umbralSuperior\": 200000,\n    \"umbralInferior\": 10000\n}"
+						}
+					]
+				},
+				{
+					"name": "ActualizarAccion",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombreAccion\": \"Bancolombia\",\r\n    \"precioActual\": 160000.0,\r\n    \"precioAnterior\": 130000.0,\r\n    \"umbralSuperior\": 200000.0,\r\n    \"umbralInferior\": 80000.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/accion/actualizar/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"accion",
+								"actualizar",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ActualizarAccion",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombreAccion\": \"Bancolombia\",\r\n    \"precioActual\": 160000.0,\r\n    \"precioAnterior\": 130000.0,\r\n    \"umbralSuperior\": 200000.0,\r\n    \"umbralInferior\": 80000.0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/accion/actualizar/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"accion",
+										"actualizar",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Nov 2023 17:09:57 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"idAccion\": 3,\n    \"nombreAccion\": \"Bancolombia\",\n    \"precioActual\": 160000,\n    \"precioAnterior\": 130000,\n    \"umbralSuperior\": 200000,\n    \"umbralInferior\": 10000\n}"
+						}
+					]
+				},
+				{
+					"name": "EliminarAccion",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/accion/borrar/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"accion",
+								"borrar",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "EliminarAccion",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/accion/borrar/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"accion",
+										"borrar",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "18"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Nov 2023 17:13:36 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "ACCION 4 ELIMINADA"
+						}
+					]
+				},
+				{
+					"name": "ObtenerAcciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/accion/obtener",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"accion",
+								"obtener"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ObtenerAcciones",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/accion/obtener",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"accion",
+										"obtener"
+									]
+								}
+							},
+							"status": "Found",
+							"code": 302,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Nov 2023 17:05:19 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"idAccion\": 1,\n        \"nombreAccion\": \"Davivienda\",\n        \"precioActual\": 187200,\n        \"precioAnterior\": 156000,\n        \"umbralSuperior\": 200000,\n        \"umbralInferior\": 10000\n    },\n    {\n        \"idAccion\": 2,\n        \"nombreAccion\": \"BBVA\",\n        \"precioActual\": 132000,\n        \"precioAnterior\": 110000,\n        \"umbralSuperior\": 200000,\n        \"umbralInferior\": 10000\n    },\n    {\n        \"idAccion\": 3,\n        \"nombreAccion\": \"Bancolombia\",\n        \"precioActual\": 70000,\n        \"precioAnterior\": 50000,\n        \"umbralSuperior\": 200000,\n        \"umbralInferior\": 10000\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "ObtenerAccion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/accion/obtener/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"accion",
+								"obtener",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ObtenerAccion",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/accion/obtener/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"accion",
+										"obtener",
+										"1"
+									]
+								}
+							},
+							"status": "Found",
+							"code": 302,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Nov 2023 17:08:41 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"idAccion\": 1,\n    \"nombreAccion\": \"Davivienda\",\n    \"precioActual\": 187200,\n    \"precioAnterior\": 156000,\n    \"umbralSuperior\": 200000,\n    \"umbralInferior\": 10000\n}"
+						}
+					]
+				},
+				{
+					"name": "ActualizarPrecioAccion",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/accion/actualizarPrecio/1?precio=100000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"accion",
+								"actualizarPrecio",
+								"1"
+							],
+							"query": [
+								{
+									"key": "precio",
+									"value": "100000"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ActualizarPrecioAccion",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/accion/actualizarPrecio/1?precio=100000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"accion",
+										"actualizarPrecio",
+										"1"
+									],
+									"query": [
+										{
+											"key": "precio",
+											"value": "100000"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 15 Nov 2023 00:53:19 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"idAccion\": 1,\n    \"nombreAccion\": \"Davivienda\",\n    \"precioActual\": 100000,\n    \"precioAnterior\": 323481.6,\n    \"umbralSuperior\": 363000,\n    \"umbralInferior\": 10000\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
