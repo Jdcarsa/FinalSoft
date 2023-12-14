@@ -5,13 +5,14 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 
 
-public class RabbitNotificador {
+public class RabbitNotificador implements IRabbitNotificador {
 
     private static final String EXCHANGE_NAME = "notificacion";
 
     public RabbitNotificador(){
     }
 
+    @Override
     public void notificar(String mensaje) throws Exception{
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("172.18.0.3");
